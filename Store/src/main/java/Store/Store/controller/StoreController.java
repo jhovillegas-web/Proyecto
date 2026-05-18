@@ -1,7 +1,9 @@
 package Store.Store.controller;
 
+import Store.Store.dto.OwnerStoreResponseDto;
 import Store.Store.dto.StoreRequestDto;
 import Store.Store.dto.StoreResponseDto;
+import Store.Store.dto.TypeStoreResponseDto;
 import Store.Store.service.StoreService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/Stores")
+@RequestMapping("/api/v1/stores")
 @RequiredArgsConstructor
 public class StoreController {
     private final StoreService service;
@@ -39,6 +41,25 @@ public class StoreController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    @GetMapping("/owner/{id}")
+    public ResponseEntity<OwnerStoreResponseDto> getStoreWithOwner(@PathVariable Long id) {
+
+        return ResponseEntity.ok(service.findStoreWithOwner(id));
+    }
+
+    @GetMapping("/with-owners")
+    public ResponseEntity<List<OwnerStoreResponseDto>> getAllStoresWithOwners() {
+        return ResponseEntity.ok(service.findAllStoresWithOwners());
+    }
+
+    @GetMapping("/with-types")
+    public ResponseEntity<List<TypeStoreResponseDto>> getAllStoresWhitTypes() {
+        return ResponseEntity.ok(service.findAllStoresWithTypes());
+    }
+
+
 
     @PostMapping
     public ResponseEntity<StoreResponseDto> create(@Valid @RequestBody StoreRequestDto dto) {

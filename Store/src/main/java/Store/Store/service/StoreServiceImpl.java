@@ -1,17 +1,22 @@
 package Store.Store.service;
 
-import Store.Store.dto.StoreRequestDto;
-import Store.Store.dto.StoreResponseDto;
+import Store.Store.dto.*;
 import Store.Store.model.Store;
 import Store.Store.repository.StoreRepository;
+import Store.Store.service.api.OwnerClient;
+import Store.Store.service.api.TypeClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @RequiredArgsConstructor
+
 public class StoreServiceImpl implements StoreService {
     private final StoreRepository repository;
+    private final OwnerClient ownerClient;
+    private final TypeClient typeClient;
 
     private Store toEntity(StoreResponseDto dto) {
         return new Store(
@@ -60,6 +65,70 @@ public class StoreServiceImpl implements StoreService {
     public StoreResponseDto update(StoreRequestDto dto) {
         return toDto(repository.save(toEntity(dto)));
     }
+
+
+    @Override
+    public OwnerStoreResponseDto findStoreWithOwner(Long id) {
+
+        Store store = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Store no encontrada"));
+
+        try {
+            OwnerResponseDto owner = ownerClient.findById(store.getId_owner());
+
+            OwnerStoreResponseDto response = new OwnerStoreResponseDto();
+            response.setId(store.getId());
+            response.setName(store.getName());
+            response.setOwner(owner);
+
+            return response;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener el owner");
+        }
+    }
+
+    @Override
+    public List<OwnerStoreResponseDto> findAllStoresWithOwners() {
+
+        List<Store> stores = repository.findAll();
+
+        return stores.stream().map(store -> {
+
+            OwnerResponseDto owner = ownerClient.findById(store.getId_owner());
+
+            OwnerStoreResponseDto response = new OwnerStoreResponseDto();
+            response.setId(store.getId());
+            response.setName(store.getName());
+            response.setOwner(owner);
+
+            return response;
+
+        }).toList();
+    }
+
+    @Override
+    public List<TypeStoreResponseDto> findAllStoresWithTypes() {
+
+        List<Store> stores = repository.findAll();
+
+        return stores.stream().map(store -> {
+
+            TypeResponseDto type = typeClient.findById(store.getId_type());
+
+            TypeStoreResponseDto response = new TypeStoreResponseDto();
+            response.setId(store.getId());
+            response.setName(store.getName());
+            response.setType(type);
+
+            return response;
+
+        }).toList();
+    }
+
+
+
+
 
     @Override
     public boolean deleteById(Long id) {
