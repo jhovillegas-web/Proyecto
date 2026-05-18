@@ -14,7 +14,7 @@ import pr_Owner.Owner.service.OwnerService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/Owners")
+@RequestMapping("/api/v1/owners")
 @RequiredArgsConstructor
 public class OwnerController {
     private final OwnerService service;
