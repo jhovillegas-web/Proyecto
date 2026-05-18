@@ -13,7 +13,7 @@ import pr_type_store.Type_Store.service.TypeService;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/TypeStores")
+@RequestMapping("/api/v1/typestores")
 @RequiredArgsConstructor
 public class TypeController {
     private final TypeService service;
