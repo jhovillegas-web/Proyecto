@@ -1,10 +1,12 @@
 package Stock.Stock.service;
 
-import Stock.Stock.dto.StockRequestDto;
-import Stock.Stock.dto.StockResponseDto;
+import Stock.Stock.dto.*;
 import Stock.Stock.model.Stock;
 import Stock.Stock.repository.StockRepository;
+import Stock.Stock.service.API.ProductClient;
+import Stock.Stock.service.API.StoreClient;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.Store;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 
 public class StockServiceImpl implements StockService {
     private final StockRepository repository;
+    private final StoreClient storeClient;
+    private final ProductClient productClient;
 
     private Stock toEntity(StockResponseDto dto) {
         return new Stock(
@@ -47,6 +51,62 @@ public class StockServiceImpl implements StockService {
 
         return dto;
     }
+
+
+    public AllResponseDto findStock(Long id) {
+
+        Stock stock = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Stock no encontrado"));
+
+        try {
+            StoreResponseDto store = storeClient.findById(stock.getId_store());
+            ProductResponseDto product = productClient.findById(stock.getId_product());
+
+            AllResponseDto response = new AllResponseDto();
+            response.setId(stock.getId());
+            response.setPrice(stock.getPrice());
+            response.setQuantity(stock.getQuantity());
+            response.setStatus(stock.getStatus());
+            response.setProduct(product);
+            response.setStore(store);
+
+            return response;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener la tienda");
+        }
+    }
+
+
+
+    @Override
+    public List<AllResponseDto> findAllStocks() {
+
+        List<Stock> stocks = repository.findAll();
+
+        return stocks.stream().map(stock -> {
+
+            StoreResponseDto store = storeClient.findById(stock.getId_store());
+            ProductResponseDto product = productClient.findById(stock.getId_product());
+
+            AllResponseDto response = new AllResponseDto();
+            response.setId(stock.getId());
+            response.setPrice(stock.getPrice());
+            response.setQuantity(stock.getQuantity());
+            response.setStatus(stock.getStatus());
+            response.setProduct(product);
+            response.setStore(store);
+
+            return response;
+
+        }).toList();
+    }
+
+
+
+
+
+
 
     @Override
     public StockResponseDto findById(Long id) {
