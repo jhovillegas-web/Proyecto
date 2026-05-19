@@ -1,5 +1,6 @@
 package Stock.Stock.controller;
 
+import Stock.Stock.dto.AllResponseDto;
 import Stock.Stock.dto.StockRequestDto;
 import Stock.Stock.dto.StockResponseDto;
 import Stock.Stock.service.StockService;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/Stocks")
+@RequestMapping("/api/v1/stocks")
 @RequiredArgsConstructor
 public class StockController {
     private final StockService service;
@@ -33,12 +34,25 @@ public class StockController {
             if (patient == null) {
                 return ResponseEntity.notFound().build();
             }
+            logger.info("Ejecutando Stock por ID");
             return ResponseEntity.ok(service.findById(id));
 
         } catch (Exception e ) {
             logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/with-all/{id}")
+    public ResponseEntity<AllResponseDto> getStockWithProduct(@PathVariable Long id) {
+        logger.info("Ejecutando el Stocks por ID con toda la informacion");
+        return ResponseEntity.ok(service.findStock(id));
+    }
+
+    @GetMapping("/with-all")
+    public ResponseEntity<List<AllResponseDto>> getAllStoresWithOwners() {
+        logger.info("Ejecutando todos los Stocks con toda la informacion");
+        return ResponseEntity.ok(service.findAllStocks());
     }
 
     @PostMapping
