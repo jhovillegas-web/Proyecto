@@ -1,5 +1,6 @@
 package Sale_Detail.Sale_Detail.controller;
 
+import Sale_Detail.Sale_Detail.dto.AllResponseDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailRequestDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailResponseDto;
 import Sale_Detail.Sale_Detail.service.SaleDetailService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/Sale-Details")
+@RequestMapping("/api/v1/sale-details")
 @RequiredArgsConstructor
 public class SaleDetailController {
     private final SaleDetailService service;
@@ -38,6 +39,12 @@ public class SaleDetailController {
             logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/with-all")
+    public ResponseEntity<List<AllResponseDto>> getAllInfo() {
+        logger.info("Ejecutando todos los Sale-Details Con toda la Informacion.");
+        return ResponseEntity.ok(service.findAllInfo());
     }
 
     @PostMapping

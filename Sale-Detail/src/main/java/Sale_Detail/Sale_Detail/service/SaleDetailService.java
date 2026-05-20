@@ -1,5 +1,6 @@
 package Sale_Detail.Sale_Detail.service;
 
+import Sale_Detail.Sale_Detail.dto.AllResponseDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailRequestDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailResponseDto;
 
@@ -9,6 +10,7 @@ public interface SaleDetailService {
     SaleDetailResponseDto findById(Long id);
     List<SaleDetailResponseDto> findAll();
     SaleDetailResponseDto create(SaleDetailRequestDto dto);
+    List<AllResponseDto> findAllInfo();
     SaleDetailResponseDto update(SaleDetailRequestDto dto);
     boolean deleteById(Long id);
 }
