@@ -44,13 +44,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/store/{id}")
-    public ResponseEntity<EmployeeStoreResponseDto> getStoreWithOwner(@PathVariable Long id) {
+    public ResponseEntity<EmployeeStoreResponseDto> getEmployeeStore(@PathVariable Long id) {
         logger.info("Ejecutando busqueda de Employee por ID de Store");
         return ResponseEntity.ok(service.findEmployeeWithStore(id));
     }
 
     @GetMapping("/with-stores")
-    public ResponseEntity<List<EmployeeStoreResponseDto>> getAllStoresWithOwners() {
+    public ResponseEntity<List<EmployeeStoreResponseDto>> getAllEmployeeStores() {
         logger.info("Ejecutando Todos los Employees por con su Store");
         return ResponseEntity.ok(service.findAllEmployeeWithStore());
     }

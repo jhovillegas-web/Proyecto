@@ -50,7 +50,7 @@ public class StockController {
     }
 
     @GetMapping("/with-all")
-    public ResponseEntity<List<AllResponseDto>> getAllStoresWithOwners() {
+    public ResponseEntity<List<AllResponseDto>> getAllStock() {
         logger.info("Ejecutando todos los Stocks con toda la informacion");
         return ResponseEntity.ok(service.findAllStocks());
     }
