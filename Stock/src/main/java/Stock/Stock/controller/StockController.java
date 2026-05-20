@@ -60,4 +60,17 @@ public class StockController {
         StockResponseDto createdPatient = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<StockResponseDto> delete(@PathVariable Long id) {
+
+        boolean deleted = service.deleteById(id);
+
+        if (deleted) {
+            logger.info("Stock Eliminado");
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

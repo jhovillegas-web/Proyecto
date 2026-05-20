@@ -60,4 +60,17 @@ public class EmployeeController {
         EmployeeResponseDto createdPatient = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<EmployeeResponseDto> delete(@PathVariable Long id) {
+
+        boolean deleted = service.deleteById(id);
+
+        if (deleted) {
+            logger.info("Employee Eliminado");
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

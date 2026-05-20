@@ -45,4 +45,17 @@ public class TypeController {
         TypeResponseDto createdPatient = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<TypeResponseDto> delete(@PathVariable Long id) {
+
+        boolean deleted = service.deleteById(id);
+
+        if (deleted) {
+            logger.info("Type Eliminado");
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }

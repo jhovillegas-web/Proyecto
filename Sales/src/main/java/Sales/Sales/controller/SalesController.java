@@ -45,4 +45,17 @@ public class SalesController {
         SalesResponseDto createdPatient = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<SalesResponseDto> delete(@PathVariable Long id) {
+
+        boolean deleted = service.deleteById(id);
+
+        if (deleted) {
+            logger.info("Sale Eliminado");
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.notFound().build();
+    }
 }
