@@ -7,7 +7,7 @@ create database sale_details_db;
 create database sales_db;
 create database stocks_db;
 create database store_db;
-create database type_Store_db;
+create database type_store_db;
 
 
 --- 1) # Microservicio Clients
@@ -48,7 +48,7 @@ Muestra los empleados con el nombre de la tienda
 DELETE http://localhost:8089/api/v1/employees/{id}
 Elimina el empleado por id
 
-POST  http://localhost:8081/api/v1/employees
+POST  http://localhost:8089/api/v1/employees
 Insertar un nuevo cliente
 {
     "id_store": ,
@@ -137,7 +137,7 @@ Muestra el sale-details con toda la informacion
 DELETE http://localhost:8088/api/v1/sale-details/{id}
 Elimina el sale-details por id
 
-POST http://localhost:8082/api/v1/sale-details
+POST http://localhost:8088/api/v1/sale-details
 Insertar un nuevo sale-details
 {
       "id_sale": ,
@@ -164,6 +164,7 @@ DELETE http://localhost:8086/api/v1/stocks/{id}
 Elimina el stock por id
 
 POST http://localhost:8086/api/v1/stocks
+Insertar un nuevo producto
 {
     "id_product": ,
     "id_store": ,
@@ -187,6 +188,7 @@ DELETE http://localhost:8084/api/v1/typestores/{id}
 Elimina el tipo de tienda por id
 
 POST http://localhost:8084/api/v1/typestores
+Insertar un tipo de tienda
 {
     "name": ""
 }
