@@ -12,7 +12,7 @@ import pr_Cliente.Cliente.service.ClientService;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v1/Clients")
+@RequestMapping("/api/v1/clients")
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService service;
@@ -20,7 +20,7 @@ public class ClientController {
 
     @GetMapping
     public ResponseEntity<List<ClientResponseDto>> findAll() {
-        logger.info("ejecutando un findAll de Clientes");
+        logger.info("Ejecutando un findAll de Clients");
         return ResponseEntity.ok(service.findAll());
     }
 
