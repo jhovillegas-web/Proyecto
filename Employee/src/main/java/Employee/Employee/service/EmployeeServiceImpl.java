@@ -1,12 +1,11 @@
 package Employee.Employee.service;
 
-import Employee.Employee.dto.EmployeeRequestDto;
-import Employee.Employee.dto.EmployeeResponseDto;
-import Employee.Employee.dto.EmployeeStoreResponseDto;
-import Employee.Employee.dto.StoreResponseDto;
+import Employee.Employee.dto.*;
 import Employee.Employee.model.Employee;
 import Employee.Employee.repository.EmployeeRepository;
 import Employee.Employee.service.api.StoreClient;
+
+import Employee.Employee.service.api.TypeClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +17,13 @@ import java.util.List;
 public class EmployeeServiceImpl implements EmployeeService {
     private final EmployeeRepository repository;
     private final StoreClient storeClient;
+    private final TypeClient typeClient;
 
     private Employee toEntity(EmployeeResponseDto dto) {
         return new Employee(
                 dto.getId(),
                 dto.getId_store(),
+                dto.getId_type(),
                 dto.getName(),
                 dto.getLastName(),
                 dto.getEmail(),
@@ -34,6 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return new Employee(
                 dto.getId(),
                 dto.getId_store(),
+                dto.getId_type(),
                 dto.getName(),
                 dto.getLastName(),
                 dto.getEmail(),
@@ -45,6 +47,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeResponseDto dto = new EmployeeResponseDto();
         dto.setId(Employee.getId());
         dto.setId_store(Employee.getId_store());
+        dto.setId_type(Employee.getId_type());
         dto.setName(Employee.getName());
         dto.setLastName(Employee.getLastName());
         dto.setEmail(Employee.getEmail());
@@ -81,6 +84,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         try {
             StoreResponseDto store = storeClient.findById(employee.getId_store());
+            TypeResponseDto type = typeClient.findById(employee.getId_type());
 
             EmployeeStoreResponseDto response = new EmployeeStoreResponseDto();
             response.setId(employee.getId());
@@ -89,6 +93,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             response.setEmail(employee.getEmail());
             response.setPhone(employee.getPhone());
             response.setStore(store);
+            response.setType(type);
 
             return response;
 
@@ -105,6 +110,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employees.stream().map(employee -> {
 
             StoreResponseDto store = storeClient.findById(employee.getId_store());
+            TypeResponseDto type = typeClient.findById(employee.getId_type());
 
             EmployeeStoreResponseDto response = new EmployeeStoreResponseDto();
             response.setId(employee.getId());
@@ -113,6 +119,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             response.setEmail(employee.getEmail());
             response.setPhone(employee.getPhone());
             response.setStore(store);
+            response.setType(type);
 
             return response;
 

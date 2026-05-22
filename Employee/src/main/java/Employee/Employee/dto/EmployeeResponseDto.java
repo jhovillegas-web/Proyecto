@@ -12,9 +12,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class EmployeeResponseDto {
-    public EmployeeResponseDto(Long id, Long id_store , String name, String lastName, String email, String phone) {
+    public EmployeeResponseDto(Long id, Long id_store ,Long id_type, String name, String lastName, String email, String phone) {
         this.id = id;
         this.id_store = id_store;
+        this.id_type = id_type;
         this.name = name;
         this.lastName = lastName;
         this.email = email;
@@ -24,6 +25,7 @@ public class EmployeeResponseDto {
     @NotNull
     Long id;
     Long id_store;
+    Long id_type;
     @NotBlank
     String name;
     @NotBlank

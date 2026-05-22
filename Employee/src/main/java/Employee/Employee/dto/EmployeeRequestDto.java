@@ -16,6 +16,7 @@ public class EmployeeRequestDto {
     Long id;
     @NotBlank
     Long id_store;
+    Long id_type;
     @NotBlank
     @Size(min = 1, max = 100)
     String name;

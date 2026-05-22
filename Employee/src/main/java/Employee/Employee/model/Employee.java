@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 
 public class Employee {
-    public Employee(Long id, Long id_store , String name, String lastName, String email, String phone) {
+    public Employee(Long id, Long id_store , Long id_type, String name, String lastName, String email, String phone) {
         this.id = id;
         this.id_store = id_store;
         this.name = name;
@@ -27,6 +27,7 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     Long id_store;
+    Long id_type;
     String name;
     String lastName;
     String email;

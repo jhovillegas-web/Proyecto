@@ -17,4 +17,5 @@ public class EmployeeStoreResponseDto {
     String email;
     String phone;
     private StoreResponseDto store;
+    private TypeResponseDto type;
 }
