@@ -5,5 +5,3 @@ create table sales (
     total varchar(20)
 );
 
-insert into sales (id_client , id_store ,total) values
-(1,5,'$14990')

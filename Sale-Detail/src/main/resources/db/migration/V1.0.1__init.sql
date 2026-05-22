@@ -6,5 +6,4 @@ create table sale_detail(
     quantity Integer not null
 );
 
-insert into sale_detail (id_sale,id_product,date,quantity) values
-(1,16,'2026-05-11',1);
+
