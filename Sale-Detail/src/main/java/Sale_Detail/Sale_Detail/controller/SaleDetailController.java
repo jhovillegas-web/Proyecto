@@ -3,6 +3,7 @@ package Sale_Detail.Sale_Detail.controller;
 import Sale_Detail.Sale_Detail.dto.AllResponseDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailRequestDto;
 import Sale_Detail.Sale_Detail.dto.SaleDetailResponseDto;
+import Sale_Detail.Sale_Detail.model.SaleDetail;
 import Sale_Detail.Sale_Detail.service.SaleDetailService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,8 @@ public class SaleDetailController {
     @GetMapping("/{id}")
     public ResponseEntity<SaleDetailResponseDto> findById(@PathVariable Long id) {
         try {
-            SaleDetailResponseDto patient = service.findById(id);
-            if (patient == null) {
+            SaleDetailResponseDto saledetail = service.findById(id);
+            if (saledetail == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -49,8 +50,14 @@ public class SaleDetailController {
 
     @PostMapping
     public ResponseEntity<SaleDetailResponseDto> create(@Valid @RequestBody SaleDetailRequestDto dto) {
-        SaleDetailResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        SaleDetailResponseDto createdSalesD = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdSalesD);
+    }
+
+    @PutMapping
+    public ResponseEntity<SaleDetailResponseDto> update(@RequestBody SaleDetailRequestDto dto) {
+        SaleDetailResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

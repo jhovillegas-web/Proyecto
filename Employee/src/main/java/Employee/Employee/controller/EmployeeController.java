@@ -30,8 +30,8 @@ public class EmployeeController {
     @GetMapping("/{id}")
     public ResponseEntity<EmployeeResponseDto> findById(@PathVariable Long id) {
         try {
-            EmployeeResponseDto patient = service.findById(id);
-            if (patient == null) {
+            EmployeeResponseDto employee = service.findById(id);
+            if (employee == null) {
                 return ResponseEntity.notFound().build();
             }
             logger.info("Ejecutando busqueda de Employee por ID");
@@ -41,6 +41,12 @@ public class EmployeeController {
             logger.error(e.getMessage());
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PutMapping
+    public ResponseEntity<EmployeeResponseDto> update(@RequestBody EmployeeRequestDto dto) {
+        EmployeeResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/store/{id}")
@@ -57,8 +63,8 @@ public class EmployeeController {
 
     @PostMapping
     public ResponseEntity<EmployeeResponseDto> create(@Valid @RequestBody EmployeeRequestDto dto) {
-        EmployeeResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        EmployeeResponseDto createdEmployee = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdEmployee);
     }
 
     @DeleteMapping("/{id}")

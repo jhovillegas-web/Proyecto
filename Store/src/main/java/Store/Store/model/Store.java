@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 public class Store {
-    public Store (Long id, Long id_owner, Long id_type, String nombre ){
+    public Store (Long id, Long id_owner, Long id_type, String name ){
         this.id= id;
         this.id_owner = id_owner;
         this.id_type = id_type;

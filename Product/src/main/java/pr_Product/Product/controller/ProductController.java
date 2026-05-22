@@ -27,8 +27,8 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductResponseDto> findById(@PathVariable Long id) {
         try {
-            ProductResponseDto patient = service.findById(id);
-            if (patient == null) {
+            ProductResponseDto product = service.findById(id);
+            if (product == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -41,8 +41,14 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<ProductResponseDto> create(@Valid @RequestBody ProductRequestDto dto) {
-        ProductResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        ProductResponseDto createdProduct = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
+    }
+
+    @PutMapping
+    public ResponseEntity<ProductResponseDto> update(@RequestBody ProductRequestDto dto) {
+        ProductResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

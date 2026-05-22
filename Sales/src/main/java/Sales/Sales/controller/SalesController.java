@@ -28,8 +28,8 @@ public class SalesController {
     @GetMapping("/{id}")
     public ResponseEntity<SalesResponseDto> findById(@PathVariable Long id) {
         try {
-            SalesResponseDto patient = service.findById(id);
-            if (patient == null) {
+            SalesResponseDto sales = service.findById(id);
+            if (sales == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -42,8 +42,14 @@ public class SalesController {
 
     @PostMapping
     public ResponseEntity<SalesResponseDto> create(@Valid @RequestBody SalesRequestDto dto) {
-        SalesResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        SalesResponseDto createdSales = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdSales);
+    }
+
+    @PutMapping
+    public ResponseEntity<SalesResponseDto> update(@RequestBody SalesRequestDto dto) {
+        SalesResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

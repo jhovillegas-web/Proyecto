@@ -59,12 +59,17 @@ public class StoreController {
         return ResponseEntity.ok(service.findAllStoresWithTypes());
     }
 
+    @PutMapping
+    public ResponseEntity<StoreResponseDto> update(@RequestBody StoreRequestDto dto) {
+        StoreResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
+    }
 
 
     @PostMapping
     public ResponseEntity<StoreResponseDto> create(@Valid @RequestBody StoreRequestDto dto) {
-        StoreResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        StoreResponseDto createdStore = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdStore);
     }
 
     @DeleteMapping("/{id}")

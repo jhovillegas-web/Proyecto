@@ -30,8 +30,8 @@ public class StockController {
     @GetMapping("/{id}")
     public ResponseEntity<StockResponseDto> findById(@PathVariable Long id) {
         try {
-            StockResponseDto patient = service.findById(id);
-            if (patient == null) {
+            StockResponseDto stock = service.findById(id);
+            if (stock == null) {
                 return ResponseEntity.notFound().build();
             }
             logger.info("Ejecutando Stock por ID");
@@ -57,8 +57,14 @@ public class StockController {
 
     @PostMapping
     public ResponseEntity<StockResponseDto> create(@Valid @RequestBody StockRequestDto dto) {
-        StockResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        StockResponseDto createdstock = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdstock);
+    }
+
+    @PutMapping
+    public ResponseEntity<StockResponseDto> update(@RequestBody StockRequestDto dto) {
+        StockResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

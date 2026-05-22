@@ -29,8 +29,8 @@ public class OwnerController {
     @GetMapping("/{id}")
     public ResponseEntity<OwnerResponseDto> findById(@PathVariable Long id) {
         try {
-            OwnerResponseDto patient = service.findById(id);
-            if (patient == null) {
+            OwnerResponseDto owner = service.findById(id);
+            if (owner == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -43,8 +43,14 @@ public class OwnerController {
 
     @PostMapping
     public ResponseEntity<OwnerResponseDto> create(@Valid @RequestBody OwnerRequestDto dto) {
-        OwnerResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        OwnerResponseDto createdOwner = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdOwner);
+    }
+
+    @PutMapping
+    public ResponseEntity<OwnerResponseDto> update(@RequestBody OwnerRequestDto dto) {
+        OwnerResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

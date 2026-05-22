@@ -27,8 +27,8 @@ public class ClientController {
     @GetMapping("/{id}")
     public ResponseEntity<ClientResponseDto> findById(@PathVariable Long id) {
         try {
-            ClientResponseDto patient = service.findById(id);
-            if (patient == null) {
+            ClientResponseDto client = service.findById(id);
+            if (client == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -41,8 +41,14 @@ public class ClientController {
 
     @PostMapping
     public ResponseEntity<ClientResponseDto> create(@Valid @RequestBody ClientRequestDto dto) {
-        ClientResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        ClientResponseDto createdClient = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdClient);
+    }
+
+    @PutMapping
+    public ResponseEntity<ClientResponseDto> update(@RequestBody ClientRequestDto dto) {
+        ClientResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")

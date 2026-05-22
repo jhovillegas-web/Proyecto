@@ -28,8 +28,8 @@ public class TypeController {
     @GetMapping("/{id}")
     public ResponseEntity<TypeResponseDto> findById(@PathVariable Long id) {
         try {
-            TypeResponseDto patient = service.findById(id);
-            if (patient == null) {
+            TypeResponseDto type = service.findById(id);
+            if (type == null) {
                 return ResponseEntity.notFound().build();
             }
             return ResponseEntity.ok(service.findById(id));
@@ -42,8 +42,14 @@ public class TypeController {
 
     @PostMapping
     public ResponseEntity<TypeResponseDto> create(@Valid @RequestBody TypeRequestDto dto) {
-        TypeResponseDto createdPatient = service.create(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatient);
+        TypeResponseDto createdType = service.create(dto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdType);
+    }
+
+    @PutMapping
+    public ResponseEntity<TypeResponseDto> update(@RequestBody TypeRequestDto dto) {
+        TypeResponseDto response = service.update(dto);
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
