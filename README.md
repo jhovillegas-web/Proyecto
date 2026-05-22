@@ -22,7 +22,7 @@ Muestra el cliente por id
 DELETE http://localhost:8081/api/v1/clients/{id}
 Elimina el cliente por id
 
-POST  http://localhost:8081/api/v1/clients
+PUT - POST  http://localhost:8081/api/v1/clients
 Insertar un nuevo cliente
 {
     "name": "",
@@ -48,7 +48,7 @@ Muestra los empleados con el nombre de la tienda
 DELETE http://localhost:8089/api/v1/employees/{id}
 Elimina el empleado por id
 
-POST  http://localhost:8089/api/v1/employees
+PUT - POST  http://localhost:8089/api/v1/employees
 Insertar un nuevo cliente
 {
     "id_store": ,
@@ -71,7 +71,7 @@ Muestra el dueño por id
 DELETE http://localhost:8083/api/v1/owners/{id}
 Elimina el dueño por id; 
 
-POST  http://localhost:8083/api/v1/owners
+PUT - POST  http://localhost:8083/api/v1/owners
 Insertar un nuevo dueño
 {
     "name": "",
@@ -92,7 +92,7 @@ Muestra el producto por id
 DELETE http://localhost:8082/api/v1/products/{id}
 Elimina el producto por id
 
-POST http://localhost:8082/api/v1/products
+PUT - POST http://localhost:8082/api/v1/products
 Insertar un nuevo producto
 {
     "name": "",
@@ -112,7 +112,7 @@ Muestra el sale por id
 DELETE http://localhost:8087/api/v1/sales/{id}
 Elimina el sale-details por id
 
-POST http://localhost:8087/api/v1/sales
+PUT - POST http://localhost:8087/api/v1/sales
 Insertar un nuevo sale
 {
     "id_client": ,
@@ -137,7 +137,7 @@ Muestra el sale-details con toda la informacion
 DELETE http://localhost:8088/api/v1/sale-details/{id}
 Elimina el sale-details por id
 
-POST http://localhost:8088/api/v1/sale-details
+PUT - POST http://localhost:8088/api/v1/sale-details
 Insertar un nuevo sale-details
 {
       "id_sale": ,
@@ -163,7 +163,7 @@ Muestra el stock con toda la informacion
 DELETE http://localhost:8086/api/v1/stocks/{id}
 Elimina el stock por id
 
-POST http://localhost:8086/api/v1/stocks
+PUT - POST http://localhost:8086/api/v1/stocks
 Insertar un nuevo producto
 {
     "id_product": ,
@@ -187,7 +187,7 @@ Muestra el tipo de tienda por id
 DELETE http://localhost:8084/api/v1/typestores/{id}
 Elimina el tipo de tienda por id
 
-POST http://localhost:8084/api/v1/typestores
+PUT - POST http://localhost:8084/api/v1/typestores
 Insertar un tipo de tienda
 {
     "name": ""
@@ -212,12 +212,32 @@ Muestra la tienda con su tipo de tienda
 DELETE http://localhost:8085/api/v1/stores/{id}
 Elimina la tienda por id
 
-POST http://localhost:8085/api/v1/stores
+PUT - POST http://localhost:8085/api/v1/stores
 Insertar una tienda nueva
 {
   "id_owner": ,
   "id_type": ,
   "name": ""
+}
+
+
+
+--- 10) #MicroServicio Types-Employee
+
+
+GET http://localhost:8090/api/v1/types-employee
+Muestra Todos los tipos de empleados
+
+GET http://localhost:8084/api/v1/types-employee/{id}
+Muestra el tipo de empleado por id
+
+DELETE http://localhost:8084/api/v1/typestores/{id}
+Elimina el tipo de empleado por id
+
+PUT - POST http://localhost:8084/api/v1/typestores
+Insertar un tipo de empleado
+{
+    "name": ""
 }
 
 
