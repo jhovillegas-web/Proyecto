@@ -1,0 +1,115 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: clients-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/v1/clients/**
+          filters:
+            - RewritePath=/api/v1/clients/(?<segment>.*), /$\{segment}
+
+        - id: employee-service
+          uri: http://localhost:8089
+          predicates:
+            - Path=/api/v1/employees/**
+          filters:
+            - RewritePath=/api/v1/employees/(?<segment>.*), /$\{segment}
+
+        - id: owner-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/api/v1/owners/**
+          filters:
+            - RewritePath=/api/v1/owners/(?<segment>.*), /$\{segment}
+
+        - id: product-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/v1/products/**
+          filters:
+            - RewritePath=/api/v1/products/(?<segment>.*), /$\{segment}
+
+        - id: saleDetail-service
+          uri: http://localhost:8088
+          predicates:
+            - Path=/api/v1/sale-details/**
+          filters:
+            - RewritePath=/api/v1/sale-details/(?<segment>.*), /$\{segment}
+
+        - id: sale-service
+          uri: http://localhost:8087
+          predicates:
+            - Path=/api/v1/sales/**
+          filters:
+            - RewritePath=/api/v1/sales/(?<segment>.*), /$\{segment}
+
+        - id: stock-service
+          uri: http://localhost:8086
+          predicates:
+            - Path=/api/v1/stocks/**
+          filters:
+            - RewritePath=/api/v1/stocks/(?<segment>.*), /$\{segment}
+
+        - id: store-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/api/v1/stores/**
+          filters:
+            - RewritePath=/api/v1/stores/(?<segment>.*), /$\{segment}
+
+        - id: TypeEmployee-service
+          uri: http://localhost:8090
+          predicates:
+            - Path=/api/v1/types-employee/**
+          filters:
+            - RewritePath=/api/v1/types-employee/(?<segment>.*), /$\{segment}
+
+        - id: TypeStore-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/api/v1/typestores/**
+          filters:
+            - RewritePath=/api/v1/typestores/(?<segment>.*), /$\{segment}
+
+  # 👇 AQUI VA LO IMPORTANTE (SWAGGER)
+springdoc:
+  swagger-ui:
+    path: /swagger
+    urls:
+      - name: clients-service
+        url: /api/v1/clients/v3/api-docs
+
+      - name: employee-service
+        url: /api/v1/employees/v3/api-docs
+
+      - name: owner-service
+        url: /api/v1/owners/v3/api-docs
+
+      - name: product-service
+        url: /api/v1/products/v3/api-docs
+
+      - name: saleDetail-service
+        url: /api/v1/sale-details/v3/api-docs
+
+      - name: sale-service
+        url: /api/v1/sales/v3/api-docs
+
+      - name: stock-service
+        url: /api/v1/stocks/v3/api-docs
+
+      - name: store-service
+        url: /api/v1/stores/v3/api-docs
+
+      - name: TypeEmployee-service
+        url: /api/v1/types-employee/v3/api-docs
+
+      - name: TypeStore-service
+        url: /api/v1/typestores/v3/api-docs
+
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
