@@ -1,0 +1,10 @@
+create database clients_db;
+create database employees_db;
+create database owners_db;
+create database products_db;
+create database sale_details_db;
+create database sales_db;
+create database stocks_db;
+create database store_db;
+create database type_store_db;
+create database type_employee_db;

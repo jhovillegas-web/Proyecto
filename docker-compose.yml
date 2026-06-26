@@ -1,0 +1,115 @@
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3307:3306"
+    networks:
+      - microservices-net
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  gateway:
+    build: ./gateway
+    container_name: gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - clients-service
+      - employee-service
+      - owner-service
+      - product-service
+      - saledetail-service
+      - sale-service
+      - stock-service
+      - store-service
+      - typeemployee-service
+      - typestore-service
+    networks:
+      - microservices-net
+
+  clients-service:
+    build: ./Cliente
+    container_name: clients-service
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices-net
+
+  employee-service:
+    build: ./Employee
+    container_name: employee-service
+    ports:
+      - "8089:8089"
+    networks:
+      - microservices-net
+
+  owner-service:
+    build: ./Owner/Owner
+    container_name: owner-service
+    ports:
+      - "8083:8083"
+    networks:
+      - microservices-net
+
+  product-service:
+    build: ./Product
+    container_name: product-service
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices-net
+
+  saledetail-service:
+    build: ./Sale-Detail
+    container_name: saledetail-service
+    ports:
+      - "8088:8088"
+    networks:
+      - microservices-net
+
+  sale-service:
+    build: ./Sales
+    container_name: sale-service
+    ports:
+      - "8087:8087"
+    networks:
+      - microservices-net
+
+  stock-service:
+    build: ./Stock
+    container_name: stock-service
+    ports:
+      - "8086:8086"
+    networks:
+      - microservices-net
+
+  store-service:
+    build: ./Store
+    container_name: store-service
+    ports:
+      - "8085:8085"
+    networks:
+      - microservices-net
+
+  typeemployee-service:
+    build: ./Type-Employee
+    container_name: typeemployee-service
+    ports:
+      - "8090:8090"
+    networks:
+      - microservices-net
+
+  typestore-service:
+    build: ./Type-Store
+    container_name: typestore-service
+    ports:
+      - "8084:8084"
+    networks:
+      - microservices-net
+
+networks:
+  microservices-net:
+    driver: bridge
