@@ -1,18 +1,17 @@
-#Creacion de las bases de datos
+# Creacion de las bases de datos\
+create database clients_db;\
+create database employees_db;\
+create database owners_db;\
+create database products_db;\
+create database sale_details_db;\
+create database sales_db;\
+create database stocks_db;\
+create database store_db;\
+create database type_store_db;\
+create database type_employee_db;
 
-create database clients_db;
-create database employees_db;
-create database owners_db;
-create database products_db;
-create database sale_details_db;
-create database sales_db;
-create database stocks_db;
-create database store_db;
-create database type_store_db;
-create database type-employee_db;
 
-
---- 1) # Microservicio Clients
+# 1) Microservicio Clients
 
 
 GET   http://localhost:8081/api/v1/clients
@@ -25,17 +24,17 @@ DELETE http://localhost:8081/api/v1/clients/{id}
 Elimina el cliente por id
 
 PUT - POST  http://localhost:8081/api/v1/clients
-Insertar un nuevo cliente
-{
-    "name": "",
-    "lastName": "",
-    "email": "",
-    "phone": ""
+Insertar un nuevo cliente\
+{\
+    "name": "",\
+    "lastName": "",\
+    "email": "",\
+    "phone": ""\
 }
 
 
 
---- 2) # MicroServicio Employee
+# 2) MicroServicio Employee
 
 
 GET http://localhost:8089/api/v1/employees
@@ -51,17 +50,17 @@ DELETE http://localhost:8089/api/v1/employees/{id}
 Elimina el empleado por id
 
 PUT - POST  http://localhost:8089/api/v1/employees
-Insertar un nuevo cliente
-{
-    "id_store": ,
-    "name": "",
-    "lastName": "",
-    "email": "",
-    "phone": ""
+Insertar un nuevo cliente\
+{\
+    "id_store": ,\
+    "name": "",\
+    "lastName": "",\
+    "email": "",\
+    "phone": ""\
 }
 
 
---- 3) # MicroServicio Owner
+# 3) MicroServicio Owner
 
 
 GET http://localhost:8083/api/v1/owners
@@ -74,16 +73,16 @@ DELETE http://localhost:8083/api/v1/owners/{id}
 Elimina el dueño por id; 
 
 PUT - POST  http://localhost:8083/api/v1/owners
-Insertar un nuevo dueño
-{
-    "name": "",
-    "lastName": "",
-    "email": "",
-    "phone": ""
+Insertar un nuevo dueño\
+{\
+    "name": "",\
+    "lastName": "",\
+    "email": "",\
+    "phone": ""\
 }
 
 
---- 4) # MicroServicio Product
+# 4) MicroServicio Product
 
 GET http://localhost:8082/api/v1/products
 Muestra Todos los Productos
@@ -95,15 +94,15 @@ DELETE http://localhost:8082/api/v1/products/{id}
 Elimina el producto por id
 
 PUT - POST http://localhost:8082/api/v1/products
-Insertar un nuevo producto
-{
-    "name": "",
-    "type": "",
-    "description": ""
+Insertar un nuevo producto\
+{\
+    "name": "",\
+    "type": "",\
+    "description": ""\
 }
 
 
---- 5) # MicroServicio Sale
+# 5) MicroServicio Sale
 
 GET http://localhost:8087/api/v1/sales
 Muestra Todos los Sale
@@ -115,16 +114,16 @@ DELETE http://localhost:8087/api/v1/sales/{id}
 Elimina el sale-details por id
 
 PUT - POST http://localhost:8087/api/v1/sales
-Insertar un nuevo sale
-{
-    "id_client": ,
-    "id_store": ,
-    "total": "$"
+Insertar un nuevo sale\
+{\
+    "id_client": ,\
+    "id_store": ,\
+    "total": "$"\
 }
 
 
 
---- 6) # MicroServicio Sale-Detail
+# 6) MicroServicio Sale-Detail
 
 
 GET http://localhost:8088/api/v1/sale-details
@@ -140,17 +139,17 @@ DELETE http://localhost:8088/api/v1/sale-details/{id}
 Elimina el sale-details por id
 
 PUT - POST http://localhost:8088/api/v1/sale-details
-Insertar un nuevo sale-details
-{
-      "id_sale": ,
-      "id_product": ,
-      "date": "YYYY-MM-DD",
-      "quantity": 
+Insertar un nuevo sale-details\
+{\
+      "id_sale": ,\
+      "id_product": ,\
+      "date": "YYYY-MM-DD",\
+      "quantity": \
 }
 
 
 
---- 7) #MicroServicio Stock
+# 7) MicroServicio Stock
 
 
 GET http://localhost:8086/api/v1/stocks
@@ -166,19 +165,19 @@ DELETE http://localhost:8086/api/v1/stocks/{id}
 Elimina el stock por id
 
 PUT - POST http://localhost:8086/api/v1/stocks
-Insertar un nuevo producto
-{
-    "id_product": ,
-    "id_store": ,
-    "price": ,
-    "quantity": ,
-    "status": "Disponible - No Disponible"
+Insertar un nuevo producto\
+{\
+    "id_product": ,\
+    "id_store": ,\
+    "price": ,\
+    "quantity": ,\
+    "status": "Disponible - No Disponible"\
 },
 
 
 
 
---- 8) MicroServicio Type-Store
+# 8) MicroServicio Type-Store
 
 GET http://localhost:8084/api/v1/typestores
 Muestra Todos los tipos de tienda
@@ -190,13 +189,13 @@ DELETE http://localhost:8084/api/v1/typestores/{id}
 Elimina el tipo de tienda por id
 
 PUT - POST http://localhost:8084/api/v1/typestores
-Insertar un tipo de tienda
-{
-    "name": ""
+Insertar un tipo de tienda\
+{\
+    "name": ""\
 }
 
 
---- 9) #MicroServicio Store
+# 9) MicroServicio Store
 
 
 GET http://localhost:8085/api/v1/stores
@@ -215,16 +214,16 @@ DELETE http://localhost:8085/api/v1/stores/{id}
 Elimina la tienda por id
 
 PUT - POST http://localhost:8085/api/v1/stores
-Insertar una tienda nueva
-{
-  "id_owner": ,
-  "id_type": ,
-  "name": ""
+Insertar una tienda nueva\
+{\
+  "id_owner": ,\
+  "id_type": ,\
+  "name": ""\
 }
 
 
 
---- 10) #MicroServicio Types-Employee
+# 10) MicroServicio Types-Employee
 
 
 GET http://localhost:8090/api/v1/types-employee
@@ -242,6 +241,32 @@ Insertar un tipo de empleado
     "name": ""
 }
 
+
+
+
+
+
+# PASOS PARA ABRIR LOS MICROSERVICIOS CON DOCKER
+
+1- Abrimos el docker del pc\
+2- Verificar si MySql80 esta funcionando si lo esta, detener el servicio\
+3- Por cmd  en Proyecto escribimos lo siguiente:\
+docker compose up -d --build
+
+4- docker compose up\
+5- docker ps a-, para ver todos los container funcionando o no\
+
+# Ingresar  a las siguientes rutas para probar el swagger
+
+localhost:8081/swagger-ui/index.html \
+Cambiar el puerto por el del microservicio.
+
+
+# Probar gateway en postman con la siguiente url:
+
+localhost:8080/api/v1/clients
+
+cambiar solo el clients por otros microservicios.
 
 
 
