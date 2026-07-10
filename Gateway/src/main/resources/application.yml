@@ -1,79 +1,79 @@
 server:
-  port: 8080
+  port: 8090
 
 spring:
   cloud:
     gateway:
       routes:
         - id: clients-service
-          uri: http://clients-service:8081
+          uri: http://clients-service:8091
           predicates:
             - Path=/api/v1/clients/**
           filters:
-            - RewritePath=/api/v1/clients/(?<segment>.*), /${segment}
+            - RewritePath=/api/v1/clients/(?<segment>.*), /api/v1/clients/${segment}
 
         - id: employee-service
-          uri: http://employee-service:8089
+          uri: http://employee-service:8099
           predicates:
             - Path=/api/v1/employees/**
           filters:
-            - RewritePath=/api/v1/employees/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/employees/(?<segment>.*), /api/v1/employees/${segment}
 
         - id: owner-service
-          uri: http://owner-service:8083
+          uri: http://owner-service:8093
           predicates:
             - Path=/api/v1/owners/**
           filters:
-            - RewritePath=/api/v1/owners/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/owners/(?<segment>.*), /api/v1/owners/${segment}
 
         - id: product-service
-          uri: http://product-service:8082
+          uri: http://product-service:8092
           predicates:
             - Path=/api/v1/products/**
           filters:
-            - RewritePath=/api/v1/products/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/products/(?<segment>.*), /api/v1/products/${segment}
 
         - id: saledetail-service
-          uri: http://saledetail-service:8088
+          uri: http://saledetail-service:8098
           predicates:
             - Path=/api/v1/sale-details/**
           filters:
-            - RewritePath=/api/v1/sale-details/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/sale-details/(?<segment>.*), /api/v1/sale-details/${segment}
 
         - id: sale-service
-          uri: http://sale-service:8087
+          uri: http://sale-service:8097
           predicates:
             - Path=/api/v1/sales/**
           filters:
-            - RewritePath=/api/v1/sales/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/sales/(?<segment>.*), /api/v1/sales/${segment}
 
         - id: stock-service
-          uri: http://stock-service:8086
+          uri: http://stock-service:8096
           predicates:
             - Path=/api/v1/stocks/**
           filters:
-            - RewritePath=/api/v1/stocks/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/stocks/(?<segment>.*), /api/v1/stocks/${segment}
 
         - id: store-service
-          uri: http://store-service:8085
+          uri: http://store-service:8095
           predicates:
             - Path=/api/v1/stores/**
           filters:
-            - RewritePath=/api/v1/stores/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/stores/(?<segment>.*), /api/v1/stores/${segment}
 
         - id: TypeEmployee-service
-          uri: http://typeemployee-service:8090
+          uri: http://typeemployee-service:8100
           predicates:
             - Path=/api/v1/types-employee/**
           filters:
-            - RewritePath=/api/v1/types-employee/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/types-employee/(?<segment>.*), /api/v1/types-employee/${segment}
 
         - id: TypeStore-service
-          uri: http://typestore-service:8084
+          uri: http://typestore-service:8094
           predicates:
             - Path=/api/v1/typestores/**
           filters:
-            - RewritePath=/api/v1/typestores/(?<segment>.*), /$\{segment}
+            - RewritePath=/api/v1/typestores/(?<segment>.*), /api/v1/typesstores/${segment}
 
   # 👇 AQUI VA LO IMPORTANTE (SWAGGER)
 springdoc:

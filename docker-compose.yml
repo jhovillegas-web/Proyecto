@@ -15,7 +15,7 @@ services:
     build: ./gateway
     container_name: gateway
     ports:
-      - "8080:8080"
+      - "8090:8090"
     depends_on:
       - clients-service
       - employee-service
@@ -34,7 +34,7 @@ services:
     build: ./Cliente
     container_name: clients-service
     ports:
-      - "8081:8081"
+      - "8091:8091"
     networks:
       - microservices-net
 
@@ -42,7 +42,7 @@ services:
     build: ./Employee
     container_name: employee-service
     ports:
-      - "8089:8089"
+      - "8099:8099"
     networks:
       - microservices-net
 
@@ -50,7 +50,7 @@ services:
     build: ./Owner/Owner
     container_name: owner-service
     ports:
-      - "8083:8083"
+      - "8093:8093"
     networks:
       - microservices-net
 
@@ -58,7 +58,7 @@ services:
     build: ./Product
     container_name: product-service
     ports:
-      - "8082:8082"
+      - "8092:8092"
     networks:
       - microservices-net
 
@@ -66,7 +66,7 @@ services:
     build: ./Sale-Detail
     container_name: saledetail-service
     ports:
-      - "8088:8088"
+      - "8098:8098"
     networks:
       - microservices-net
 
@@ -74,7 +74,7 @@ services:
     build: ./Sales
     container_name: sale-service
     ports:
-      - "8087:8087"
+      - "8097:8097"
     networks:
       - microservices-net
 
@@ -82,7 +82,7 @@ services:
     build: ./Stock
     container_name: stock-service
     ports:
-      - "8086:8086"
+      - "8096:8096"
     networks:
       - microservices-net
 
@@ -90,7 +90,7 @@ services:
     build: ./Store
     container_name: store-service
     ports:
-      - "8085:8085"
+      - "8095:8095"
     networks:
       - microservices-net
 
@@ -98,7 +98,7 @@ services:
     build: ./Type-Employee
     container_name: typeemployee-service
     ports:
-      - "8090:8090"
+      - "8100:8100"
     networks:
       - microservices-net
 
@@ -106,7 +106,7 @@ services:
     build: ./Type-Store
     container_name: typestore-service
     ports:
-      - "8084:8084"
+      - "8094:8094"
     networks:
       - microservices-net
 
