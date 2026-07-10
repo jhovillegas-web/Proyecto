@@ -14,16 +14,16 @@ create database type_employee_db;
 # 1) Microservicio Clients
 
 
-GET   http://localhost:8081/api/v1/clients
+GET   http://localhost:8091/api/v1/clients
 Muestra Todos los clientes
 
-GET   http://localhost:8081/api/v1/clients/{id}
+GET   http://localhost:8091/api/v1/clients/{id}
 Muestra el cliente por id
 
-DELETE http://localhost:8081/api/v1/clients/{id}
+DELETE http://localhost:8091/api/v1/clients/{id}
 Elimina el cliente por id
 
-PUT - POST  http://localhost:8081/api/v1/clients
+PUT - POST  http://localhost:8091/api/v1/clients
 Insertar un nuevo cliente\
 {\
     "name": "",\
@@ -37,19 +37,19 @@ Insertar un nuevo cliente\
 # 2) MicroServicio Employee
 
 
-GET http://localhost:8089/api/v1/employees
+GET http://localhost:8099/api/v1/employees
 Muestra Todos los Empleados
 
-GET http://localhost:8089/api/v1/employees/{id}
+GET http://localhost:8099/api/v1/employees/{id}
 Muestra el empleado por id
 
-GET http://localhost:8089/api/v1/employees/with-stores
+GET http://localhost:8099/api/v1/employees/with-stores
 Muestra los empleados con el nombre de la tienda
 
-DELETE http://localhost:8089/api/v1/employees/{id}
+DELETE http://localhost:8099/api/v1/employees/{id}
 Elimina el empleado por id
 
-PUT - POST  http://localhost:8089/api/v1/employees
+PUT - POST  http://localhost:8099/api/v1/employees
 Insertar un nuevo cliente\
 {\
     "id_store": ,\
@@ -63,16 +63,16 @@ Insertar un nuevo cliente\
 # 3) MicroServicio Owner
 
 
-GET http://localhost:8083/api/v1/owners
+GET http://localhost:8093/api/v1/owners
 Muestra Todos los Dueños
 
-GET http://localhost:8083/api/v1/owners/{id}
+GET http://localhost:8093/api/v1/owners/{id}
 Muestra el dueño por id
 
-DELETE http://localhost:8083/api/v1/owners/{id}
+DELETE http://localhost:8093/api/v1/owners/{id}
 Elimina el dueño por id; 
 
-PUT - POST  http://localhost:8083/api/v1/owners
+PUT - POST  http://localhost:8093/api/v1/owners
 Insertar un nuevo dueño\
 {\
     "name": "",\
@@ -84,16 +84,16 @@ Insertar un nuevo dueño\
 
 # 4) MicroServicio Product
 
-GET http://localhost:8082/api/v1/products
+GET http://localhost:8092/api/v1/products
 Muestra Todos los Productos
 
-GET http://localhost:8082/api/v1/products/{id}
+GET http://localhost:8092/api/v1/products/{id}
 Muestra el producto por id
 
-DELETE http://localhost:8082/api/v1/products/{id}
+DELETE http://localhost:8092/api/v1/products/{id}
 Elimina el producto por id
 
-PUT - POST http://localhost:8082/api/v1/products
+PUT - POST http://localhost:8092/api/v1/products
 Insertar un nuevo producto\
 {\
     "name": "",\
@@ -104,16 +104,16 @@ Insertar un nuevo producto\
 
 # 5) MicroServicio Sale
 
-GET http://localhost:8087/api/v1/sales
+GET http://localhost:8097/api/v1/sales
 Muestra Todos los Sale
 
-GET http://localhost:8087/api/v1/sales/{id}
+GET http://localhost:8097/api/v1/sales/{id}
 Muestra el sale por id
 
-DELETE http://localhost:8087/api/v1/sales/{id}
+DELETE http://localhost:8097/api/v1/sales/{id}
 Elimina el sale-details por id
 
-PUT - POST http://localhost:8087/api/v1/sales
+PUT - POST http://localhost:8097/api/v1/sales
 Insertar un nuevo sale\
 {\
     "id_client": ,\
@@ -126,19 +126,19 @@ Insertar un nuevo sale\
 # 6) MicroServicio Sale-Detail
 
 
-GET http://localhost:8088/api/v1/sale-details
+GET http://localhost:8098/api/v1/sale-details
 Muestra Todos los Sale-Details
 
-GET http://localhost:8088/api/v1/sale-details/{id}
+GET http://localhost:8098/api/v1/sale-details/{id}
 Muestra el sale-details por id
 
-GET http://localhost:8088/api/v1/sale-details/with-all
+GET http://localhost:8098/api/v1/sale-details/with-all
 Muestra el sale-details con toda la informacion
 
-DELETE http://localhost:8088/api/v1/sale-details/{id}
+DELETE http://localhost:8098/api/v1/sale-details/{id}
 Elimina el sale-details por id
 
-PUT - POST http://localhost:8088/api/v1/sale-details
+PUT - POST http://localhost:8098/api/v1/sale-details
 Insertar un nuevo sale-details\
 {\
       "id_sale": ,\
@@ -152,19 +152,19 @@ Insertar un nuevo sale-details\
 # 7) MicroServicio Stock
 
 
-GET http://localhost:8086/api/v1/stocks
+GET http://localhost:8096/api/v1/stocks
 Muestra Todos los Stocks
 
-GET http://localhost:8086/api/v1/stocks/{id}
+GET http://localhost:8096/api/v1/stocks/{id}
 Muestra el stock por id
 
-GET http://localhost:8086/api/v1/stocks/with-all
+GET http://localhost:8096/api/v1/stocks/with-all
 Muestra el stock con toda la informacion
 
-DELETE http://localhost:8086/api/v1/stocks/{id}
+DELETE http://localhost:8096/api/v1/stocks/{id}
 Elimina el stock por id
 
-PUT - POST http://localhost:8086/api/v1/stocks
+PUT - POST http://localhost:8096/api/v1/stocks
 Insertar un nuevo producto\
 {\
     "id_product": ,\
@@ -179,16 +179,16 @@ Insertar un nuevo producto\
 
 # 8) MicroServicio Type-Store
 
-GET http://localhost:8084/api/v1/typestores
+GET http://localhost:8094/api/v1/typestores
 Muestra Todos los tipos de tienda
 
-GET http://localhost:8084/api/v1/typestores/{id}
+GET http://localhost:8094/api/v1/typestores/{id}
 Muestra el tipo de tienda por id
 
-DELETE http://localhost:8084/api/v1/typestores/{id}
+DELETE http://localhost:8094/api/v1/typestores/{id}
 Elimina el tipo de tienda por id
 
-PUT - POST http://localhost:8084/api/v1/typestores
+PUT - POST http://localhost:8094/api/v1/typestores
 Insertar un tipo de tienda\
 {\
     "name": ""\
@@ -198,22 +198,22 @@ Insertar un tipo de tienda\
 # 9) MicroServicio Store
 
 
-GET http://localhost:8085/api/v1/stores
+GET http://localhost:8095/api/v1/stores
 Muestra Todos las tiendas
 
-GET http://localhost:8085/api/v1/stores/{id}
+GET http://localhost:8095/api/v1/stores/{id}
 Muestra la tienda por id
 
-GET http://localhost:8085/api/v1/stores/with-owners
+GET http://localhost:8095/api/v1/stores/with-owners
 Muestra la tienda y su dueño
 
-GET http://localhost:8085/api/v1/stores/with-types
+GET http://localhost:8095/api/v1/stores/with-types
 Muestra la tienda con su tipo de tienda
 
-DELETE http://localhost:8085/api/v1/stores/{id}
+DELETE http://localhost:8095/api/v1/stores/{id}
 Elimina la tienda por id
 
-PUT - POST http://localhost:8085/api/v1/stores
+PUT - POST http://localhost:8095/api/v1/stores
 Insertar una tienda nueva\
 {\
   "id_owner": ,\
@@ -226,16 +226,16 @@ Insertar una tienda nueva\
 # 10) MicroServicio Types-Employee
 
 
-GET http://localhost:8090/api/v1/types-employee
+GET http://localhost:8100/api/v1/types-employee
 Muestra Todos los tipos de empleados
 
-GET http://localhost:8084/api/v1/types-employee/{id}
+GET http://localhost:8100/api/v1/types-employee/{id}
 Muestra el tipo de empleado por id
 
-DELETE http://localhost:8084/api/v1/typestores/{id}
+DELETE http://localhost:8100/api/v1/typestores/{id}
 Elimina el tipo de empleado por id
 
-PUT - POST http://localhost:8084/api/v1/typestores
+PUT - POST http://localhost:8100/api/v1/typestores
 Insertar un tipo de empleado
 {
     "name": ""
@@ -258,13 +258,21 @@ docker compose up -d --build
 
 # Ingresar  a las siguientes rutas para probar el swagger
 
-localhost:8081/swagger-ui/index.html \
-Cambiar el puerto por el del microservicio.
+localhost:8091/swagger-ui/index.html -- clients\
+localhost:8092/swagger-ui/index.html -- products\
+localhost:8093/swagger-ui/index.html -- owners\
+localhost:8094/swagger-ui/index.html -- type-stores\
+localhost:8095/swagger-ui/index.html -- stores\
+localhost:8096/swagger-ui/index.html -- stocks\
+localhost:8097/swagger-ui/index.html -- sale\
+localhost:8098/swagger-ui/index.html -- sale-details\
+localhost:8099/swagger-ui/index.html -- employees\
+localhost:8100/swagger-ui/index.html -- type-employee
 
 
 # Probar gateway en postman con la siguiente url:
 
-localhost:8080/api/v1/clients
+localhost:8090/api/v1/clients
 
 cambiar solo el clients por otros microservicios.
 
